@@ -1,4 +1,4 @@
-# Splender Application
+# Splendor Application
 #### A MEAN stack implementation of the Splendor board game for networked play
 
 ##### The directory structure for the application is as follows:
