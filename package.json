@@ -1,0 +1,28 @@
+{
+  "name": "splendor-app",
+  "version": "0.0.0",
+  "description": "A MEAN stack implentation of the Splendor board game for networked play",
+  "main": "server.js",
+  "scripts": {
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinmalby/splender-app.git"
+  },
+  "keywords": [
+    "MEAN",
+    "node.js",
+    "angular.js",
+    "mongodb",
+    "express.js",
+    "boardgame",
+    "splendor"
+  ],
+  "author": "Kevin Malby and Kathryn Rodgers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevinmalby/splender-app/issues"
+  },
+  "homepage": "https://github.com/kevinmalby/splender-app#readme"
+}
