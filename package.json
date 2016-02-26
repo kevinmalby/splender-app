@@ -4,9 +4,10 @@
   "description": "A MEAN stack implentation of the Splendor board game for networked play",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "watch": "nodemon server.js",
-    "debug": "node --debug server.js & node-inspector"
+    "start-dev": "NODE_ENV=development node server.js",
+    "watch-dev": "NODE_ENV=development nodemon server.js",
+    "debug-dev": "NODE_ENV=development node --debug server.js & node-inspector",
+    "server-test": "NODE_ENV=test mocha --reporter spec app/tests"
   },
   "repository": {
     "type": "git",
@@ -27,14 +28,15 @@
     "url": "https://github.com/kevinmalby/splender-app/issues"
   },
   "homepage": "https://github.com/kevinmalby/splender-app#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "hbs": "^4.0.0",
+    "mongoose": "^4.4.5",
+    "socket.io": "^1.4.5"
+  },
   "devDependencies": {
     "morgan": "^1.7.0",
     "should": "^8.2.2",
     "supertest": "^1.2.0"
-  },
-  "dependencies": {
-    "express": "^4.13.4",
-    "hbs": "^4.0.0",
-    "mongoose": "^4.4.5"
   }
 }
