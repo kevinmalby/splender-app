@@ -3,15 +3,13 @@
 const config = require('./config'),
 	express = require('express'),
 	morgan = require('morgan'),
-	http = require('http'),
-	socketio = require('socket.io');
+	http = require('http');
 
 module.exports = function(db) {
 
 	// Initialize the express app
 	let app = express();
 	let server = http.createServer(app);
-	let io = socketio.listen(server);
 
 	// Use morgan logger if in the dev environment
 	if (process.env.NODE_ENV === 'development') {
