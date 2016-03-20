@@ -1,4 +1,24 @@
 <template>
-  <h1>This is the app. Woooooo!</h1>
-  <h4>Username: ${userName}</h4>
+  <require from='bootstrap/css/bootstrap.css'></require>
+
+  <div>
+    <ul class="nav navbar-nav">
+        <li repeat.for="row of router.navigation | authFilter: isAuthenticated" class="${row.isActive ? 'active' : ''}">
+          <a href.bind="row.href">${row.title}</a>
+        </li>
+    </ul>
+
+    <ul if.bind="!isAuthenticated" class="nav navbar-nav navbar-right">
+      <li><a href="/#/signin">Sign In</a></li>
+      <li><a href="/#/signup">Sign Up</a></li>
+    </ul>
+
+    <ul if.bind="isAuthenticated" class="nav navbar-nav navbar-right">
+      <li if.bind="profileName">Welcome, ${profileName}!</li>
+      <li><button class="btn btn-primary" click.delegate="signOut()">Sign Out</button></li>
+    </ul>
+  </div>
+  <div>
+    <router-view></router-view>
+  </div>
 </template>

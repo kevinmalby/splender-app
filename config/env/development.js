@@ -1,5 +1,6 @@
 'use strict;'
 
 module.exports = {
-	db: 'mongodb://localhost/splendor-app'
+	db: 'mongodb://localhost/splendor-app',
+  jwtSecret: 'developmentSessionSecret'
 };

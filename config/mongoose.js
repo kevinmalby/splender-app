@@ -8,6 +8,7 @@ module.exports = function() {
 
 	// This section is where we require all
 	// of the models we define for the project
+  require('../app/models/user.server.model');
 
 	return db;
 };
