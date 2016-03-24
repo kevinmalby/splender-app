@@ -2,10 +2,12 @@ import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { AuthService, AuthorizeStep, FetchConfig } from 'aurelia-auth';
+import 'bootstrap';
 
 @inject(FetchConfig, AuthService, EventAggregator)
 export class App {
     profileName = null;
+    brandText = '';
 
     constructor(fetchConfig, auth, eventAggregator) {
       this.fetchConfig = fetchConfig;
@@ -15,6 +17,8 @@ export class App {
 
       this.eventAggregator = eventAggregator;
       this.subscribe();
+
+      this.setBrandText();
     }
 
     // Sets up the configuration for the router
@@ -53,6 +57,7 @@ export class App {
     signOut() {
       localStorage.removeItem('profile');
       this.auth.logout();
+      this.setBrandText();
       this.router.navigate('signin');
     }
 
@@ -70,6 +75,7 @@ export class App {
         if (eventArgs.instruction.fragment == '/' ||
           eventArgs.instruction.fragment == '/home') {
           this.setUserProfile();
+          this.setBrandText();
         }
       });
     }
@@ -81,5 +87,12 @@ export class App {
         let profile = JSON.parse(localStorage.getItem('profile'));
         this.profileName = profile.username;
       }
+    }
+
+    setBrandText() {
+      if (this.isAuthenticated)
+        this.brandText = 'Splendor';
+      else
+        this.brandText = 'Welcome!';
     }
 }

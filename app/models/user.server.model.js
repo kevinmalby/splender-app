@@ -58,15 +58,15 @@ let UserSchema = new Schema({
     type: String,
     validate: [
       function(password) {
-        return password && password.length >= 8;
-      }, 'Password should be at least 8 characters'
+        return password && password.length >= 7;
+      }, 'Password should be at least 7 characters'
     ]
   },
   stats: [StatsSchema]
 });
 
 UserSchema.pre('save', function(next) {
-    var user = this;
+    let user = this;
 
     // only hash the password if it has been modified (or is new)
     if (!user.isModified('password')) {
