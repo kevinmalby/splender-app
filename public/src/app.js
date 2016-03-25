@@ -2,14 +2,14 @@ import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { AuthService, AuthorizeStep, FetchConfig } from 'aurelia-auth';
-import 'bootstrap';
+import { User } from './services/user-service';
 
-@inject(FetchConfig, AuthService, EventAggregator)
+@inject(FetchConfig, AuthService, EventAggregator, User)
 export class App {
     profileName = null;
     brandText = '';
 
-    constructor(fetchConfig, auth, eventAggregator) {
+    constructor(fetchConfig, auth, eventAggregator, user) {
       this.fetchConfig = fetchConfig;
       this.fetchConfig.configure();
 
@@ -19,6 +19,8 @@ export class App {
       this.subscribe();
 
       this.setBrandText();
+
+      this.user = user;
     }
 
     // Sets up the configuration for the router
@@ -78,6 +80,12 @@ export class App {
           this.setBrandText();
         }
       });
+
+      this.eventAggregator.subscribe('router:navigation:processing', eventArgs => {
+        if (eventArgs.instruction.fragment == '/?') {
+          console.log('wtf');
+        }
+      });
     }
 
     // Gets the username for the current user from the local storage
@@ -85,6 +93,16 @@ export class App {
     setUserProfile() {
       if (this.isAuthenticated) {
         let profile = JSON.parse(localStorage.getItem('profile'));
+
+        // Fill in the user's information for access as a service
+        this.user.username = profile.username;
+        this.user.email = profile.email;
+        if (profile.stats) {
+          console.log(JSON.stringify(profile.stats, null, 2));
+        }
+
+        console.log(JSON.stringify(this.user, null, 2));
+
         this.profileName = profile.username;
       }
     }

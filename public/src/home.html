@@ -1,24 +1,10 @@
 <template>
   <require from="./home.css"></require>
+  <require from="./chat"></require>
 
   <div id="home-content">
     <div class="row">
-      <div id="chat-component" class="col-md-2 sidebar">
-        <div id="chat-area">
-
-        </div>
-        <div id="chat-entry">
-          <form role="form">
-            <div class="input-group">
-               <label for="input-chat" class="sr-only">Chat Message</label>
-               <input type="text" id="input-chat" class="form-control" placeholder="Enter some text...">
-               <span class="input-group-btn">
-                    <button type="submit" id="signup-button" class="btn btn-primary">Send</button>
-               </span>
-            </div>
-          </form>
-        </div>
-      </div>
+      <chat id="chat-component" class="col-md-2 sidebar"></chat>
       <div id="game-content" class="col-md-10 col-md-offset-2">
         game!
       </div>

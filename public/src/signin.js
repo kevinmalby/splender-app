@@ -3,7 +3,7 @@ import { Router } from 'aurelia-router';
 import { AuthService } from 'aurelia-auth';
 import { ensure, Validation } from 'aurelia-validation';
 
-@inject(Router, AuthService, Validation)
+@inject(Router, AuthService, Validation, User)
 export class SignIn {
   @ensure(function(it){ it.isNotEmpty().hasLengthBetween(4,50) })
   username = '';
@@ -13,10 +13,11 @@ export class SignIn {
 
   errors = [];
 
-  constructor(router, auth, validation) {
+  constructor(router, auth, validation, user) {
     this.router = router;
     this.auth = auth;
     this.validation = validation.on(this);
+    this.user = user;
   }
 
   // Submits the user sign in information to
@@ -28,6 +29,7 @@ export class SignIn {
       return this.auth.login(this.username, this.password)
         .then(response => {
           if (response.success) {
+
             localStorage.setItem('profile', JSON.stringify(response.user));
             this.router.navigate('home');
           }

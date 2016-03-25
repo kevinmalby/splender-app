@@ -80,7 +80,7 @@ function authenticate(req, res, next) {
               // return the information including token as JSON
               res.json({
                 success: true,
-                user: { username: user.username, email: user.email },
+                user: { username: user.username, email: user.email, stats: user.stats },
                 token: token
               });
             } else {

@@ -1,0 +1,22 @@
+<template>
+  <require from="./chat.css"></require>
+
+  <div id="chat-area">
+    <ul class="messages list-unstyled">
+      <li repeat.for="message of messages" if.bind="messages">
+        ${message}
+      </li>
+    </ul>
+  </div>
+  <div id="chat-entry">
+    <form role="form" submit.delegate="sendMessage()">
+      <div class="input-group">
+         <label for="input-chat" class="sr-only">Chat Message</label>
+         <input type="text" id="input-chat" class="form-control" placeholder="Enter some text..." value.bind="messageText">
+         <span class="input-group-btn">
+              <button type="submit" id="signup-button" class="btn btn-primary">Send</button>
+         </span>
+      </div>
+    </form>
+  </div>
+</template>

@@ -11,6 +11,6 @@ let config = {
   loginRedirect: '',
   signupRedirect: '',
   logoutRedirect: ''
-}
+};
 
 export default config;

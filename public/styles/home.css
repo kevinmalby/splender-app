@@ -14,14 +14,3 @@
 #game-content {
   background-color: lightblue;
 }
-
-#chat-area {
-  width: 100%;
-  height: 95%;
-}
-
-#chat-entry {
-  width: 100%;
-  height: 5%;
-  bottom: 0;
-}

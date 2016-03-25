@@ -24,7 +24,7 @@ module.exports = function(db) {
 
 	// Use morgan logger if in the dev environment
 	if (process.env.NODE_ENV === 'development') {
-		app.use(morgan('dev'));
+		//app.use(morgan('dev'));
 	}
 
 	// views is directory for all template files
