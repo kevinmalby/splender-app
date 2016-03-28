@@ -1,6 +1,8 @@
 #chat-area {
   width: 100%;
   height: 95%;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #chat-entry {

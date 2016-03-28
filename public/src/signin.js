@@ -3,7 +3,7 @@ import { Router } from 'aurelia-router';
 import { AuthService } from 'aurelia-auth';
 import { ensure, Validation } from 'aurelia-validation';
 
-@inject(Router, AuthService, Validation, User)
+@inject(Router, AuthService, Validation)
 export class SignIn {
   @ensure(function(it){ it.isNotEmpty().hasLengthBetween(4,50) })
   username = '';
@@ -13,11 +13,10 @@ export class SignIn {
 
   errors = [];
 
-  constructor(router, auth, validation, user) {
+  constructor(router, auth, validation) {
     this.router = router;
     this.auth = auth;
     this.validation = validation.on(this);
-    this.user = user;
   }
 
   // Submits the user sign in information to

@@ -15,4 +15,4 @@ app.listen(process.env.PORT || 5000);
 
 module.exports = app;
 
-console.log(`Server is running at: http://localhost:9000`);
+console.log(`Server is running at: http://localhost:${process.env.PORT}`);

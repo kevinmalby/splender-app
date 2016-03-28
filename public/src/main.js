@@ -1,4 +1,4 @@
-import config from './config/auth-config';
+import authConfig from './config/auth-config';
 import { CustomValidations } from './validations';
 
 export function configure(aurelia) {
@@ -10,7 +10,7 @@ export function configure(aurelia) {
       CustomValidations.setValidations();
     })
     .plugin('aurelia-auth', (baseConfig) => {
-      baseConfig.configure(config);
+      baseConfig.configure(authConfig);
     });
 
   aurelia.start().then(() => aurelia.setRoot());

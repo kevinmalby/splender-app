@@ -3,6 +3,7 @@ import { Router } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { AuthService, AuthorizeStep, FetchConfig } from 'aurelia-auth';
 import { User } from './services/user-service';
+import 'bootstrap';
 
 @inject(FetchConfig, AuthService, EventAggregator, User)
 export class App {
@@ -78,12 +79,6 @@ export class App {
           eventArgs.instruction.fragment == '/home') {
           this.setUserProfile();
           this.setBrandText();
-        }
-      });
-
-      this.eventAggregator.subscribe('router:navigation:processing', eventArgs => {
-        if (eventArgs.instruction.fragment == '/?') {
-          console.log('wtf');
         }
       });
     }

@@ -6,6 +6,7 @@ import { User } from './services/user-service';
 export class Chat {
   messages = [];
   messageText = '';
+  scrollPosition = 10000;
 
   constructor(socket, user) {
     this.io = socket;
@@ -14,16 +15,19 @@ export class Chat {
   }
 
   sendMessage() {
-    let chatText = `${this.user.username}: ${this.messageText}`;
-    this.messages.push(chatText);
+    if (this.messageText) {
+      let chatText = `${this.user.username}: ${this.messageText}`;
+      this.messages.push(chatText);
 
-    console.log(`Here for: ${this.user.username}`);
+      // TODO: For now hard-code room, but that will need to change
+      this.io.socket.emit('chat message',
+        {room: 'mainLobby', text: chatText});
 
-    // TODO: For now hard-code room, but that will need to change
-    this.io.socket.emit('chat message',
-      {room: 'mainLobby', text: chatText});
+      // Scroll to the bottom of the div to show most recent
+      this.scrollPosition = this.messages.length * 2000;
 
-    this.messageText = '';
+      this.messageText = '';
+    }
   }
 
   receiveMessage(message) {

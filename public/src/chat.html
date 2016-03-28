@@ -1,7 +1,7 @@
 <template>
   <require from="./chat.css"></require>
 
-  <div id="chat-area">
+  <div id="chat-area" scrollTop.bind="scrollPosition">
     <ul class="messages list-unstyled">
       <li repeat.for="message of messages" if.bind="messages">
         ${message}

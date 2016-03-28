@@ -1,5 +1,7 @@
-let config = {
-  baseUrl: 'http://localhost:9000',
+import config from './config';
+
+let authConfig = {
+  baseUrl: config.hostUrl,
   signupUrl: '/api/users',
   loginUrl: '/api/authenticate',
   loginRoute: '#/signin',
@@ -13,4 +15,4 @@ let config = {
   logoutRedirect: ''
 };
 
-export default config;
+export default authConfig;
