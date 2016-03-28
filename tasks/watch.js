@@ -44,7 +44,7 @@ gulp.task('watch-sync', ['nodemon', 'browser-sync'], function() {
 });
 
 gulp.task('watch', ['nodemon'], function() {
-  gulp.watch(paths.source, ['build-system', browserSync.reload]).on('change', reportChange);
-  gulp.watch(paths.html, ['build-html', browserSync.reload]).on('change', reportChange);
-  gulp.watch(paths.style, ['build-style', browserSync.reload]).on('change', reportChange);
+  gulp.watch(paths.source, 'build-system').on('change', reportChange);
+  gulp.watch(paths.html, 'build-html').on('change', reportChange);
+  gulp.watch(paths.style, 'build-style').on('change', reportChange);
 });
