@@ -8,7 +8,7 @@ import { User } from './services/user-service';
 export class NavBar {
   @bindable router = null;
 
-  profileName = null;
+  username = null;
   brandText = '';
 
   constructor(fetchConfig, auth, eventAggregator, user) {
@@ -21,13 +21,12 @@ export class NavBar {
     // Initialize the dependency injected values
     this.subscribe();
     this.fetchConfig.configure();
-
-    // Initialize bound values
-    this.setBrandText();
   }
 
   attached() {
-    this.setUserProfile();
+    // Initialize bound values
+    this.setBrandText();
+    this.setUsername();
   }
 
   // Checks if the user is authenticated
@@ -36,7 +35,7 @@ export class NavBar {
   }
 
   signOut() {
-    localStorage.removeItem('profile');
+    localStorage.removeItem('user');
     this.auth.logout();
     this.setBrandText();
     this.router.navigate('signin');
@@ -47,22 +46,17 @@ export class NavBar {
   // a life-cycle event of some kind
   subscribe() {
     this.eventAggregator.subscribe('signin', () => {
-        this.setUserProfile();
-        this.setBrandText();
+      this.user.initializeUser();
+      this.setUsername();
+      this.setBrandText();
     });
   }
 
   // Gets the username for the current user from the local storage
   // which was set when the user logged in
-  setUserProfile() {
+  setUsername() {
     if (this.isAuthenticated) {
-      let profile = JSON.parse(localStorage.getItem('profile'));
-
-      // Fill in the user's information for access as a service
-      this.user.username = profile.username;
-      this.user.email = profile.email;
-
-      this.profileName = profile.username;
+      this.username = this.user.data.username;
     }
   }
 

@@ -31,7 +31,7 @@ export class SignIn {
         .then(response => {
           if (response.success) {
 
-            localStorage.setItem('profile', JSON.stringify(response.user));
+            localStorage.setItem('user', JSON.stringify(response.user));
             this.router.navigate('home');
             this.eventAggregator.publish('signin');
           }
