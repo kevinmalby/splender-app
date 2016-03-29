@@ -1,0 +1,25 @@
+.splash {
+  text-align: center;
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -150px;
+  margin-left: -150px;
+  width: 300px;
+  height: 300px;
+}
+
+.splash .message {
+  font-size: 30px;
+  line-height: 30px;
+  text-shadow: rgba(0, 0, 0, 0.5) 0 0 15px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.splash .fa-spinner {
+  text-align: center;
+  display: inline-block;
+  font-size: 30px;
+  margin-top: 30px;
+}

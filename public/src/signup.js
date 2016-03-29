@@ -1,9 +1,10 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
+import { EventAggregator } from 'aurelia-event-aggregator';
 import { AuthService } from 'aurelia-auth';
 import { ensure, Validation } from 'aurelia-validation';
 
-@inject(Router, AuthService, Validation)
+@inject(Router, AuthService, Validation, EventAggregator)
 export class SignUp {
 
   @ensure((it) => { it.isNotEmpty().hasLengthBetween(4,50) })
@@ -17,10 +18,11 @@ export class SignUp {
 
   errors = [];
 
-  constructor(router, auth, validation) {
+  constructor(router, auth, validation, eventAggregator) {
     this.router = router;
     this.auth = auth;
     this.validation = validation.on(this);
+    this.eventAggregator = eventAggregator;
   }
 
   // Submits the user sign up information to
@@ -40,6 +42,7 @@ export class SignUp {
           if (response.success) {
             localStorage.setItem('profile', JSON.stringify(response.user));
             this.router.navigate('home');
+            this.eventAggregator.publish('signin');
           }
           else {
             for (let error of response.errors) {
