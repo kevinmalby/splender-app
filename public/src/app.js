@@ -1,5 +1,4 @@
 import { AuthorizeStep } from 'aurelia-auth';
-import 'bootstrap';
 
 export class App {
 

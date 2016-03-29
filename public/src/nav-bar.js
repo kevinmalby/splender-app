@@ -66,5 +66,4 @@ export class NavBar {
     else
       this.brandText = 'Welcome!';
   }
-
 }

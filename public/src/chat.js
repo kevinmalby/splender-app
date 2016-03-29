@@ -16,7 +16,7 @@ export class Chat {
 
   sendMessage() {
     if (this.messageText) {
-      let chatText = `${this.user.username}: ${this.messageText}`;
+      let chatText = `${this.user.data.username}: ${this.messageText}`;
       this.messages.push(chatText);
 
       // TODO: For now hard-code room, but that will need to change

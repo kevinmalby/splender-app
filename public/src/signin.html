@@ -6,10 +6,9 @@
     <div repeat.for="error of errors">
       <div class="alert alert-danger">${error}</div>
     </div>
-    <h1 class="text-center">Sign In</h1>
+    <h1 class="center-align">Sign In</h1>
     <div class="row">
-      <form role="form" class="col-xs-8 col-xs-offset-2
-        col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3"
+      <form role="form" class="col s8 offset-s2 m6 offset-m3"
         validate.bind="validation" submit.delegate="submitSignIn()">
         <div class="form-group">
           <label for="input-username" >Username</label>
@@ -19,7 +18,7 @@
           <label for="input-password" >Password</label>
           <input type="password" id="input-password" class="form-control" placeholder="Password" value.bind="password">
         </div>
-        <button type="submit" id="signin-button" class="btn btn-primary col-xs-12">Sign In</button>
+        <button type="submit" id="signin-button" class="btn col s12">Sign In</button>
       </form>
     </div>
   </div>

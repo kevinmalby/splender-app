@@ -10,12 +10,10 @@
   </div>
   <div id="chat-entry">
     <form role="form" submit.delegate="sendMessage()">
-      <div class="input-group">
-         <label for="input-chat" class="sr-only">Chat Message</label>
-         <input type="text" id="input-chat" class="form-control" placeholder="Enter some text..." value.bind="messageText">
-         <span class="input-group-btn">
-              <button type="submit" id="signup-button" class="btn btn-primary">Send</button>
-         </span>
+      <div>
+        <label for="input-chat">Chat Message</label>
+        <input type="text" id="input-chat" placeholder="Enter some text..." value.bind="messageText">
+        <button type="submit" id="signup-button" class="btn">Send</button>
       </div>
     </form>
   </div>

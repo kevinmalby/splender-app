@@ -1,45 +1,31 @@
 <template>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">${brandText}</a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
+  <require from="./nav-bar.css"></require>
+  <require from="./custom-attributes/dropdown-attribute"></require>
+
+  <ul id="userDropdown" class="dropdown-content">
+    <li><a>Game Stats</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a click.delegate="signOut()">Sign Out</a></li>
+  </ul>
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <a class="brand-logo" href="#">${brandText}</a>
+        <!-- <ul class="nav navbar-nav">
             <li repeat.for="row of router.navigation | authFilter: isAuthenticated" class="${row.isActive ? 'active' : ''}">
               <a href.bind="row.href">${row.title}</a>
             </li>
-        </ul>
+        </ul> -->
 
-        <ul if.bind="!isAuthenticated" class="nav navbar-nav navbar-right">
+        <ul if.bind="!isAuthenticated" class="right">
           <li><a href="/#/signin">Sign In</a></li>
           <li><a href="/#/signup">Sign Up</a></li>
         </ul>
 
-        <ul if.bind="isAuthenticated" class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown"role="button"
-              aria-haspopup="true" aria-expanded="false">${username} <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a>Game Stats</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a click.delegate="signOut()">Sign Out</a></li>
-            </ul>
-          </li>
-        </ul>
-
-        <ul class="nav navbar-nav navbar-right">
-          <li class="loader" if.bind="router.isNavigating">
-            <i class="fa fa-spinner fa-spin fa-2x"></i>
-          </li>
+        <ul class="right">
+          <li if.bind="isAuthenticated"><a dropdown class="dropdown-button right" href="#" data-activates="userDropdown">${username}<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </template>

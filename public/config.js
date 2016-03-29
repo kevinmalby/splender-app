@@ -22,7 +22,6 @@ System.config({
     "aurelia-validation": "npm:aurelia-validation@0.6.3",
     "babel": "npm:babel-core@5.8.35",
     "babel-runtime": "npm:babel-runtime@5.8.35",
-    "bootstrap": "github:twbs/bootstrap@3.3.6",
     "core-js": "npm:core-js@1.2.6",
     "font-awesome": "npm:font-awesome@4.5.0",
     "jsonwebtoken": "npm:jsonwebtoken@5.7.0",
@@ -66,9 +65,6 @@ System.config({
       "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1.1.1",
       "aurelia-router": "npm:aurelia-router@1.0.0-beta.1.1.3",
       "fetch": "github:github/fetch@0.11.0"
-    },
-    "github:twbs/bootstrap@3.3.6": {
-      "jquery": "github:components/jquery@2.2.1"
     },
     "npm:asn1.js@4.5.2": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
