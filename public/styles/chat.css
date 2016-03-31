@@ -1,12 +1,30 @@
 #chat-area {
   width: 100%;
-  height: 95%;
+  height: 85%;
   overflow-y: auto;
   overflow-x: hidden;
 }
 
 #chat-entry {
   width: 100%;
-  height: 5%;
-  bottom: 0;
+  height: 10%;
+  bottom: 5%;
+}
+
+/*#signup-button {
+  position: absolute;
+  width: 60px;
+  right: 10px;
+}*/
+
+.input-field button {
+  position: absolute;
+  right: 2%;
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  font: inherit;
+  border-bottom: none;
+  cursor: pointer;
+  color: #039be5;
 }

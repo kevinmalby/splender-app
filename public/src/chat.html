@@ -11,9 +11,10 @@
   <div id="chat-entry">
     <form role="form" submit.delegate="sendMessage()">
       <div>
-        <label for="input-chat">Chat Message</label>
-        <input type="text" id="input-chat" placeholder="Enter some text..." value.bind="messageText">
-        <button type="submit" id="signup-button" class="btn">Send</button>
+        <div class="input-field">
+          <input type="text" id="input-chat" class="left" placeholder="Enter some text..." value.bind="messageText">
+          <button type="submit" id="signup-button" class="right"><i class="material-icons right">send</i></button>
+        </div>
       </div>
     </form>
   </div>
