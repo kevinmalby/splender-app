@@ -1,6 +1,17 @@
 import { AuthorizeStep } from 'aurelia-auth';
+import { FetchConfig } from 'aurelia-auth';
+import { inject } from 'aurelia-framework';
 
+@inject(FetchConfig)
 export class App {
+
+  constructor(fetchConfig) {
+    this.fetchConfig = fetchConfig;
+  }
+
+  activate() {
+    this.fetchConfig.configure();
+  }
 
     // Sets up the configuration for the router
     configureRouter(config, router) {

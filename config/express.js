@@ -6,7 +6,7 @@ const config = require('./config'),
 	morgan = require('morgan'),
 	bodyParser = require('body-parser'),
 	routerMiddleware = require('./express-router-middleware'),
-	userRoutes = express.Router();
+	apiRoutes = express.Router();
 
 module.exports = function(db) {
 
@@ -43,17 +43,18 @@ module.exports = function(db) {
 	require('../app/routes/index.server.routes')(app);
 
 	// require the open user routes
-	require('../app/routes/users.server.open.routes')(userRoutes);
+	require('../app/routes/users.server.open.routes')(apiRoutes);
 
 	// Middleware that will verify access tokens
 	// when a user tries to sign up
-	routerMiddleware.verifyToken(userRoutes);
+	routerMiddleware.verifyToken(apiRoutes);
 
-	// Require the protected user routes
-	require('../app/routes/users.server.protected.routes')(userRoutes);
+	// Require the protected api routes
+	require('../app/routes/users.server.protected.routes')(apiRoutes);
+	require('../app/routes/games.server.routes')(apiRoutes);
 
 	// Register the user router with the express app
-	app.use('/api', userRoutes);
+	app.use('/api', apiRoutes);
 
 	// Tell express where to serve to serve the static
 	// files from

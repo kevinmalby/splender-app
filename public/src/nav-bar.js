@@ -1,26 +1,24 @@
 import { bindable, inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
-import { AuthService, AuthorizeStep, FetchConfig } from 'aurelia-auth';
+import { AuthService, AuthorizeStep } from 'aurelia-auth';
 import { User } from './services/user-service';
 
-@inject(FetchConfig, AuthService, EventAggregator, User)
+@inject(AuthService, EventAggregator, User)
 export class NavBar {
   @bindable router = null;
 
   username = null;
   brandText = '';
 
-  constructor(fetchConfig, auth, eventAggregator, user) {
+  constructor(auth, eventAggregator, user) {
     // Assign dependency injected values
-    this.fetchConfig = fetchConfig;
     this.auth = auth;
     this.eventAggregator = eventAggregator;
     this.user = user;
 
     // Initialize the dependency injected values
     this.subscribe();
-    this.fetchConfig.configure();
   }
 
   attached() {

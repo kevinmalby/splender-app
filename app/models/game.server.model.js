@@ -2,19 +2,30 @@
 
 const mongoose = require('mongoose'),
   Schema = mongoose.Schema,
-  Player = mongoose.model('Player'),
-  Card = mongoose.model('Card'),
-  Noble = mongoose.model('Noble');
+  CardSchema = mongoose.model('Card').schema,
+  NobleSchema = mongoose.model('Noble').schema,
+  PlayerSchema = mongoose.model('Player').schema;
+
 
 let GameSchema = new Schema({
-  players: [Player],
+  name: {
+    type: String,
+    unique: true
+  },
+  isPublic: Boolean,
+  willConvertToPublic: Boolean,
+  timeUntilPublic: Number,
+  players: [PlayerSchema],
+  adminPlayer: String,
+  minPlayers: Number,
+  maxPlayers: Number,
   numPlayers: Number,
-  playerOrder: [string],
-  tierOneCards: [Card],
-  tierTwoCards: [Card],
-  tierThreeCards: [Card],
-  nobles: [Noble],
+  playerOrder: [String],
+  tierOneCards: [CardSchema],
+  tierTwoCards: [CardSchema],
+  tierThreeCards: [CardSchema],
+  nobles: [NobleSchema],
   gemTokens: {}
 });
 
-mongoose.model('GameSchema', GameSchema);
+mongoose.model('Game', GameSchema);

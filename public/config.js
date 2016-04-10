@@ -25,6 +25,7 @@ System.config({
     "core-js": "npm:core-js@1.2.6",
     "font-awesome": "npm:font-awesome@4.5.0",
     "jsonwebtoken": "npm:jsonwebtoken@5.7.0",
+    "juration": "npm:juration@0.0.1",
     "paulvanbladel/aurelia-auth": "github:paulvanbladel/aurelia-auth@0.12.15",
     "socket.io-client": "github:socketio/socket.io-client@1.4.5",
     "github:jspm/nodelibs-assert@0.1.0": {

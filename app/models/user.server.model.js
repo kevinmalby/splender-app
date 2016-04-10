@@ -99,4 +99,12 @@ UserSchema.methods.verifyPassword = function(candidatePassword, cb) {
     });
 };
 
+UserSchema.statics.findByUsername = function (username) {
+  return new Promise((resolve, reject) => {
+    this.find({ username: new RegExp(username, 'i') })
+      .then(user => resolve(user))
+      .catch(err => reject(err))
+  });
+}
+
 mongoose.model('User', UserSchema);

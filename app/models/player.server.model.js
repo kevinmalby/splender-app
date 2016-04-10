@@ -2,22 +2,21 @@
 
 const mongoose = require('mongoose'),
   Schema = mongoose.Schema,
-  Card = mongoose.model('Card'),
-  Noble = mongoose.model('Noble');
+  UserSchema = mongoose.model('User').schema,
+  CardSchema = mongoose.model('Card').schema,
+  NobleSchema = mongoose.model('Noble').schema;
 
 let PlayerSchema = new Schema({
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  },
-  purchasedCards: [Card],
-  reservedCards: [Card],
+  user: [UserSchema],
+  isAdmin: Boolean,
+  purchasedCards: [CardSchema],
+  reservedCards: [CardSchema],
   gemTokens: {},
   victoryPoints: Number,
-  noblesTaken: [Noble],
+  noblesTaken: [NobleSchema],
   numberOfTurnsTaken: Number,
   numberOfThreeTokenDraws: Number,
   numberOfTwoTokenDraws: Number
 });
 
-mongoose.model('PlayerSchema', PlayerSchema);
+mongoose.model('Player', PlayerSchema);

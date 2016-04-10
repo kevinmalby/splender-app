@@ -26,10 +26,7 @@ exports.createUser = function(req, res, next) {
     email: req.body.email
   });
 
-  // TODO: Figure out how to authenticate the user at
-  // the same time as login.
-
-  // save the bear and check for errors
+  // save the user and check for errors
   newUser.save()
     .then(user => {
       req.body.email = user.username;
@@ -76,6 +73,8 @@ function authenticate(req, res, next) {
               let token = jwt.sign(user, config.jwtSecret, {
                 expiresIn: '1d' // expires in 24 hours
               });
+
+              console.log(token);
 
               // return the information including token as JSON
               res.json({

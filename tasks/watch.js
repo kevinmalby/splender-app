@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var paths = require('../paths');
 var browserSync = require('browser-sync');
 var nodemon = require('gulp-nodemon');
+var runSequence = require('run-sequence');
 
 // outputs changes to files to the console
 function reportChange(event){
@@ -12,7 +13,8 @@ gulp.task('browser-sync', ['build', 'nodemon'], function() {
   browserSync.init({
     proxy: 'http://localhost:5000',
     port: 9000,
-    browser: ['google-chrome']
+    browser: ['google-chrome'],
+    ghostMode: false
   });
 });
 

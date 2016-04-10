@@ -7,6 +7,8 @@ let authConfig = {
   loginRoute: '#/signin',
   signupRoute: '#/signup',
   tokenName: 'token',
+  authHeader: 'x-access-token',
+  authToken: '',
 
   // Disabled all redirects because it was causing the entire app
   // to reload

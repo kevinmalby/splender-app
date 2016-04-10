@@ -20,6 +20,7 @@ exports.verifyToken = function(router) {
       // verifies secret and checks exp
       jwt.verify(token, config.jwtSecret, (err, decoded) => {
         if (err) {
+          console.log(token);
           return res.json({ success: false, message: 'Failed to authenticate token.' });
         } else {
           // if everything is good, save to request for use in other routes
@@ -29,7 +30,6 @@ exports.verifyToken = function(router) {
       });
 
     } else {
-
       // if there is no token
       // return an error
       return res.status(403).send({
