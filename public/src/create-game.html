@@ -1,55 +1,57 @@
 <template>
-  <require from="./custom-attributes/select-attribute"></require>
-  <require from="./value-converters/seconds-to-human-readable"></require>
-
-  <div class="container">
-    <h1 class="center-align">Create Game</h1>
-    <form role="form" submit.delegate="createGameSubmit()">
-      <div class="row">
-        <div class="col s6">
-          <h3 class="center-align">Game Details</h3>
-          <div class="form-group">
-            <label for="input-gameName">Game Name</label>
-            <input type="text" id="input-gameName" class="form-control" placeholder="Game name" value.bind="gameName">
-          </div>
-          <div class="form-group">
-            <div class="input-field">
-              <p>Min Players</p>
-              <select select class="browser-default" value.bind="minPlayers">
-                <option repeat.for="num of numPlayers" value.bind="num" if.bind="num <= maxPlayers">${num}</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="input-field">
-              <p>Max Players</p>
-              <select select class="browser-default" value.bind="maxPlayers">
-                <option repeat.for="num of numPlayers" value.bind="num" if.bind="num >= minPlayers" model.bind="num">${num}</option>
-              </select>
-            </div>
+<require from="./custom-attributes/select-attribute"></require>
+<require from="./value-converters/seconds-to-human-readable"></require>
+<div class="container">
+  <h1 class="center-align">Create Game</h1>
+  <form role="form" submit.delegate="createGameSubmit()">
+    <div class="row">
+      <div class="col s6">
+        <h3 class="center-align">Game Details</h3>
+        <div class="form-group">
+          <label for="input-gameName">Game Name</label>
+          <input type="text" id="input-gameName" class="form-control" placeholder="Game name" value.bind="gameName">
+        </div>
+        <div class="form-group">
+          <div class="input-field">
+            <p>Min Players</p>
+            <select select class="browser-default" value.bind="minPlayers">
+              <option repeat.for="num of numPlayers" value.bind="num" if.bind="num <= maxPlayers">${num}</option>
+            </select>
           </div>
         </div>
-        <div class="col s6">
-          <h3 class="center-align">Access</h3>
-          <div class="form-group">
-            <input type="checkbox" id="game-access" checked.bind="isPublic"/>
-            <label for="game-access">Public</label>
-          </div>
-          <div if.bind="!isPublic">
-            <div class="form-group">
-              <input type="checkbox" id="convert-to-public" checked.bind="willConvertToPublic"/>
-              <label for="convert-to-public">Open To Public After Wait-time</label>
-            </div>
-            <div class="form-group" if.bind="willConvertToPublic">
-              <p>Time Until Public</p>
-              <select select class="browser-default" value.bind="timeToWait">
-                <option repeat.for="wait of waitTimes" value.bind="wait">${wait | secondsToHumanReadable}</option>
-              </select>
-            </div>
+        <div class="form-group">
+          <div class="input-field">
+            <p>Max Players</p>
+            <select select class="browser-default" value.bind="maxPlayers">
+              <option repeat.for="num of numPlayers" value.bind="num" if.bind="num >= minPlayers" model.bind="num">${num}</option>
+            </select>
           </div>
         </div>
-        <button type="submit" id="create-game-button" class="waves-effect waves-light btn col s12">Create Game</button>
       </div>
-    </form>
-  </div>
+      <div class="col s6">
+        <h3 class="center-align">Access</h3>
+        <div class="form-group">
+          <input type="checkbox" id="game-access" checked.bind="isPublic"/>
+          <label for="game-access">Public</label>
+        </div>
+        <div if.bind="!isPublic">
+          <div class="form-group">
+            <input type="checkbox" id="convert-to-public" checked.bind="willConvertToPublic"/>
+            <label for="convert-to-public">Open To Public After Wait-time</label>
+          </div>
+          <div class="form-group" if.bind="willConvertToPublic">
+            <p>Time Until Public</p>
+            <select select class="browser-default" value.bind="timeToWait">
+              <option repeat.for="wait of waitTimes" value.bind="wait">${wait | secondsToHumanReadable}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <button id="cancel-create-game-button" class="waves-effect waves-light btn red col s6" click.delegate="cancelCreateGame()">Cancel</button>
+      <button type="submit" id="cancel-create-game-button" class="waves-effect waves-light btn col s6">Create Game</button>
+    </div>
+  </form>
+</div>
 </template>

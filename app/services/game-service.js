@@ -20,6 +20,8 @@ exports.AddNewGame = function AddNewGame(newGame) {
   }
 }
 
+exports.gamesInPlay = gamesInPlay;
+
 let initializeCards = function(game) {
   for (let tier = 1; tier < 4; tier++) {
     let curTierString = `tier${numToWord(tier)}Cards`;

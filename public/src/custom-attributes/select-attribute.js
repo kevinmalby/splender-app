@@ -11,6 +11,7 @@ export class SelectCustomAttribute {
   }
 
   detached() {
-    this.plugin.destroy();
+    if (this.plugin)
+      this.plugin.destroy();
   }
 }

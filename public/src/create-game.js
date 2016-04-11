@@ -1,8 +1,9 @@
 import { inject } from 'aurelia-framework';
 import { User } from './services/user-service';
 import { HttpClient, json } from 'aurelia-fetch-client';
+import { EventAggregator } from 'aurelia-event-aggregator';
 
-@inject(User, HttpClient)
+@inject(User, HttpClient, EventAggregator)
 export class CreateGame {
   gameName = '';
   isPublic = true;
@@ -13,9 +14,10 @@ export class CreateGame {
   timeToWait = 60*0.5;
   waitTimes = [60*0.5, 60*1, 60*2, 60*5, 60*10];
 
-  constructor(user, http) {
+  constructor(user, http, eventAggregator) {
     this.user = user;
     this.http = http;
+    this.eventAggregator = eventAggregator;
   }
 
   createGameSubmit() {
@@ -35,8 +37,13 @@ export class CreateGame {
     })
     .then(response => response.json())
     .then(response => {
-      console.log(JSON.stringify(response.game, null, 2));
+      this.eventAggregator.publish('New Game Data', response.game);
+      //console.log(JSON.stringify(response.game, null, 2));
     })
     .catch(err => console.log(err));
+  }
+
+  cancelCreateGame() {
+    this.eventAggregator.publish('Game Lobby');
   }
 }
