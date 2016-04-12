@@ -2,17 +2,17 @@
 
 const mongoose = require('./config/mongoose'),
   express = require('./config/express'),
-  ioService = require('./app/services/io-service');
+  ioService = require('./config/socket-io');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 let db = mongoose();
 let app = express(db);
-
-ioService(app);
+let io = ioService(app);
 
 app.listen(process.env.PORT || 5000);
 
-module.exports = app;
+exports.app = app;
+exports.io = io;
 
 console.log(`Server is running at: http://localhost:${process.env.PORT}`);

@@ -1,6 +1,6 @@
 'use strict';
 
-const errorService = require('../services/error-service');
+const errorService = require('../services/error.server.service');
 
 const jwt = require('jsonwebtoken'),
   User = require('mongoose').model('User'),

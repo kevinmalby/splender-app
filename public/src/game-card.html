@@ -1,6 +1,9 @@
 <template>
-  <div class="card medium">
-    <h3 class="center-align left">${gameData.name}</h3>
-    <div class="right-align right">${gameData.isPublic}</div>
+<div class="card small">
+  <h3 class="center-align left">${gameData.name}</h3>
+  <div class="right-align right">${gameData.isPublic}</div>
+  <div class="valign-wrapper">
+    <button class="waves-effect waves-light btn valign" click.delegate="joinGame()">Join</button>
   </div>
+</div>
 </template>

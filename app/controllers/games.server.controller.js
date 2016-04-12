@@ -4,15 +4,15 @@ const mongoose = require('mongoose'),
   Game = mongoose.model('Game'),
   Player = mongoose.model('Player'),
   User = mongoose.model('User'),
-  gameService = require('../services/game-service'),
-  errorService = require('../services/error-service');
+  gameState = require('../services/game-state.server.service'),
+  errorService = require('../services/error.server.service');
 
 exports.getGames = function(req, res, next) {
   let allGames = [];
 
-  Object.keys(gameService.gamesInPlay).forEach(key => {
-    let game = gameService.gamesInPlay[key];
-    allGames.push(getGameDescription(game));
+  Object.keys(gameState.gamesInPlay).forEach(key => {
+    let game = gameState.gamesInPlay[key];
+    allGames.push(gameState.getGameMetadata(game.name));
   });
 
   res.json({
@@ -34,6 +34,7 @@ exports.createGame = function(req, res, next) {
       return adminPlayer.user = user
     })
     .then(() => {
+      console.log('Admin: ' + req.body.owner);
       return newGame = new Game({
         name: req.body.name,
         isPublic: req.body.isPublic,
@@ -46,12 +47,12 @@ exports.createGame = function(req, res, next) {
       });
     })
     .then(() => {
-      return gameService.AddNewGame(newGame);
+      return gameState.AddNewGame(newGame);
     })
     .then(() => {
-      res.json({
+      return res.json({
         success: true,
-        game: getGameDescription(newGame)
+        game: gameState.getGameMetadata(newGame.name)
       });
     })
     .catch(err => {
@@ -66,16 +67,4 @@ exports.deleteGame = function(req, res, next) {
   Game.remove({ name: req.params.name })
     .then(game => res.json(game))
     .catch(err => res.send(err));
-}
-
-function getGameDescription(game) {
-  return {
-    name: game.name,
-    isPublic: game.isPublic,
-    willConvertToPublic: game.willConvertToPublic,
-    timeUntilPublic: game.timeUntilPublic,
-    minPlayers: game.minPlayers,
-    maxPlayers: game.maxPlayers,
-    adminPlayer: game.adminPlayer
-  }
 }

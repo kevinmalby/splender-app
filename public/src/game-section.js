@@ -18,12 +18,12 @@ export class GameSection {
   }
 
   subscribe() {
-    this.eventAggregator.subscribe('New Game Data', gameData => {
+    this.eventAggregator.subscribe('game waiting room', gameData => {
       this.viewData = gameData;
       this.content = './game-waiting-room';
     });
 
-    this.eventAggregator.subscribe('Game Lobby', () => {
+    this.eventAggregator.subscribe('game lobby', () => {
       this.content = './game-lobby';
     });
   }

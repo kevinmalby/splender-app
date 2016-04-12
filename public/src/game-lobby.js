@@ -1,12 +1,16 @@
 import { inject } from 'aurelia-framework';
 import { HttpClient, json } from 'aurelia-fetch-client';
+import { Socket } from './services/socket-service';
 
-@inject(HttpClient)
+@inject(HttpClient, Socket)
 export class GameLobby {
   games = [];
 
-  constructor(http) {
+  constructor(http, socket) {
     this.http = http;
+    this.io = socket;
+
+    this.io.socket.on('add game', game => this.addGame(game));
   }
 
   attached() {
@@ -18,5 +22,10 @@ export class GameLobby {
       }
     })
     .catch(err => console.log(err));
+  }
+
+  addGame(game) {
+    console.log('new game: ' + JSON.stringify(game, null, 2));
+    this.games.push(game);
   }
 }

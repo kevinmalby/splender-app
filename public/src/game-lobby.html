@@ -3,7 +3,7 @@
 
   <div>
     <div class="row">
-      <game-card repeat.for="game of games" class="col s6 m4 l3" game-data.bind="game" name.bind="game.name"></game-card>
+      <game-card repeat.for="game of games" class="col s6 m4 l3" game-data.bind="game"></game-card>
     </div>
     <a click.delegate="createGame()">Create a game!</a>
   </div>
