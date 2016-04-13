@@ -23,9 +23,7 @@ export class Chat {
       this.io.socket.emit('chat message',
         {room: 'mainLobby', text: chatText});
 
-      // Scroll to the bottom of the div to show most recent
-      this.scrollPosition = this.messages.length * 2000;
-
+      this.scrollToBottom();
       this.messageText = '';
     }
   }
@@ -33,6 +31,12 @@ export class Chat {
   receiveMessage(message) {
     if (message) {
       this.messages.push(message);
+      this.scrollToBottom();
     }
+  }
+
+  scrollToBottom() {
+    // Scroll to the bottom of the div to show most recent
+    this.scrollPosition = this.messages.length * 2000;
   }
 }

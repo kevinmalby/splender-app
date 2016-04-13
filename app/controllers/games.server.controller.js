@@ -7,6 +7,13 @@ const mongoose = require('mongoose'),
   gameState = require('../services/game-state.server.service'),
   errorService = require('../services/error.server.service');
 
+/**
+ * Retrieves all of the games that are currently in play
+ * and sends this data to the client via json
+ * @param  {HTTP Request Object}   req  [Contains all of the request information and functionality]
+ * @param  {HTTP Response Object}   res  [Contains the response information and functionality]
+ * @param  {Function} next [Relinquishes control to the next function in the pipeline]
+ */
 exports.getGames = function(req, res, next) {
   let allGames = [];
 
@@ -21,9 +28,23 @@ exports.getGames = function(req, res, next) {
   });
 }
 
+/**
+ * Retrieves a game with the given name that is currently in play
+ * and sends this data to the client via json
+ * @param  {HTTP Request Object}   req  [Contains all of the request information and functionality]
+ * @param  {HTTP Response Object}   res  [Contains the response information and functionality]
+ * @param  {Function} next [Relinquishes control to the next function in the pipeline]
+ */
 exports.getGame = function(req, res, next) {
 }
 
+/**
+ * Creates a new game that will be added to the games currently in play
+ * and sends this data to the client via json
+ * @param  {HTTP Request Object}   req  [Contains all of the request information and functionality]
+ * @param  {HTTP Response Object}   res  [Contains the response information and functionality]
+ * @param  {Function} next [Relinquishes control to the next function in the pipeline]
+ */
 exports.createGame = function(req, res, next) {
   let newGame = null;
   let adminPlayer = new Player();
@@ -63,8 +84,12 @@ exports.createGame = function(req, res, next) {
     });
 }
 
+/**
+ * Deletes a game with the given name and removes it from the games that are currently in play
+ * and sends the deleted game data to the client via json
+ * @param  {HTTP Request Object}   req  [Contains all of the request information and functionality]
+ * @param  {HTTP Response Object}   res  [Contains the response information and functionality]
+ * @param  {Function} next [Relinquishes control to the next function in the pipeline]
+ */
 exports.deleteGame = function(req, res, next) {
-  Game.remove({ name: req.params.name })
-    .then(game => res.json(game))
-    .catch(err => res.send(err));
 }

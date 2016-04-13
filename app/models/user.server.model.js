@@ -65,6 +65,10 @@ let UserSchema = new Schema({
   stats: [StatsSchema]
 });
 
+/**
+ * User schema pre-save hook which hashes the user's password using the bcrypt package
+ * @param  {Function} next  [Relinquishes control to the next function in the pipeline]
+ */
 UserSchema.pre('save', function(next) {
     let user = this;
 
@@ -92,6 +96,13 @@ UserSchema.pre('save', function(next) {
     });
 });
 
+/**
+ * User schema instance method that uses the bcrypt package to verify the
+ * user's password
+ * @param  {[type]}   candidatePassword [The password provided by the user]
+ * @param  {Function} cb                [A callback which returns the result of the compare
+ *                                      or an error]
+ */
 UserSchema.methods.verifyPassword = function(candidatePassword, cb) {
     bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
         if (err) return cb(err);
@@ -99,6 +110,10 @@ UserSchema.methods.verifyPassword = function(candidatePassword, cb) {
     });
 };
 
+/**
+ * User schema static method which returns a user object from the given username
+ * @param  {[type]} username [The username of the user to retrieve]
+ */
 UserSchema.statics.findByUsername = function (username) {
   return new Promise((resolve, reject) => {
     this.find({ username: new RegExp(username, 'i') })

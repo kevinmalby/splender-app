@@ -1,24 +1,42 @@
 'use strict';
 
-const errorService = require('../services/error.server.service');
-
 const jwt = require('jsonwebtoken'),
   User = require('mongoose').model('User'),
-  config = require('../../config/config');
+  config = require('../../config/config'),
+  errorService = require('../services/error.server.service');
 
-
+/**
+ * Retrieves all of the users in the database and sends this data to the client via json
+ * @param  {HTTP Request Object}   req  [Contains all of the request information and functionality]
+ * @param  {HTTP Response Object}   res  [Contains the response information and functionality]
+ * @param  {Function} next [Relinquishes control to the next function in the pipeline]
+ */
 exports.getUsers = function(req, res, next) {
   User.find({})
     .then(users => res.json(users))
     .catch(err => res.send(err));
 }
 
+/**
+ * Retrieves a user in the database with the given username and sends this data
+ * to the client via json
+ * @param  {HTTP Request Object}   req  [Contains all of the request information and functionality]
+ * @param  {HTTP Response Object}   res  [Contains the response information and functionality]
+ * @param  {Function} next [Relinquishes control to the next function in the pipeline]
+ */
 exports.getUser = function(req, res, next) {
-  User.findById(req.params.user_id)
+  User.findById(req.params.username)
     .then(user => res.json(user))
     .catch(err => res.send(err));
 }
 
+/**
+ * Creates a user and saves it to the database and sends this data to the client via json.
+ * This function also authenticates the user after it is created
+ * @param  {HTTP Request Object}   req  [Contains all of the request information and functionality]
+ * @param  {HTTP Response Object}   res  [Contains the response information and functionality]
+ * @param  {Function} next [Relinquishes control to the next function in the pipeline]
+ */
 exports.createUser = function(req, res, next) {
   let newUser = new User({
     username: req.body.username,
@@ -40,8 +58,14 @@ exports.createUser = function(req, res, next) {
     });
 }
 
+/**
+ * Updates the user in the database with the given username and sends this data to the client via json
+ * @param  {HTTP Request Object}   req  [Contains all of the request information and functionality]
+ * @param  {HTTP Response Object}   res  [Contains the response information and functionality]
+ * @param  {Function} next [Relinquishes control to the next function in the pipeline]
+ */
 exports.updateUser = function(req, res, next) {
-  User.findById(req.params.user_id)
+  User.findById(req.params.username)
     .then(user => {
       user = req.body;
       return user.save();
@@ -50,12 +74,25 @@ exports.updateUser = function(req, res, next) {
     .catch(err => res.send(err));
 }
 
+/**
+ * Deletes a user from the database and sends this data to the client via json
+ * @param  {HTTP Request Object}   req  [Contains all of the request information and functionality]
+ * @param  {HTTP Response Object}   res  [Contains the response information and functionality]
+ * @param  {Function} next [Relinquishes control to the next function in the pipeline]
+ */
 exports.deleteUser = function(req, res, next) {
-  User.remove({ _id: req.params.user_id })
+  User.remove({ _id: req.params.username })
     .then(user => res.json(user))
     .catch(err => res.send(err));
 }
 
+/**
+ * Authenticates a user using the json web token provided in the request object with the
+ * jsonwebtoken package.
+ * @param  {HTTP Request Object}   req  [Contains all of the request information and functionality]
+ * @param  {HTTP Response Object}   res  [Contains the response information and functionality]
+ * @param  {Function} next [Relinquishes control to the next function in the pipeline]
+ */
 function authenticate(req, res, next) {
   let errorMessage = '';
   User.findOne({ username: req.body.email })
@@ -73,8 +110,6 @@ function authenticate(req, res, next) {
               let token = jwt.sign(user, config.jwtSecret, {
                 expiresIn: '1d' // expires in 24 hours
               });
-
-              console.log(token);
 
               // return the information including token as JSON
               res.json({
