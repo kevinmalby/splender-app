@@ -22,6 +22,10 @@ export class CreateGame {
     this.io = io;
   }
 
+  /**
+   * Constructs and sends the new game object which is sent to
+   * the server via POST request.
+   */
   createGameSubmit() {
     let gameInfo = {
       name: this.gameName,
@@ -39,12 +43,20 @@ export class CreateGame {
     })
     .then(response => response.json())
     .then(response => {
+      // Let the other clients know when a game is successfully created
+      // so that the game lobby can refresh
       this.io.socket.emit('game created', this.gameName);
+
+      // Tell the game-section viewmodel to transition to the game lobby
       this.eventAggregator.publish('game waiting room', response.game);
     })
     .catch(err => console.log(err));
   }
 
+  /**
+   * Cancel creating a new game and tell the game-section viewmodel to
+   * return to the game lobby
+   */
   cancelCreateGame() {
     this.eventAggregator.publish('game lobby');
   }

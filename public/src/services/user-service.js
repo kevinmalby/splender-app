@@ -1,3 +1,8 @@
+/**
+ * This class simply parses the stored user data and
+ * makes it available in object form for the rest of the
+ * Aurelia app
+ */
 export class User {
   data = {};
 

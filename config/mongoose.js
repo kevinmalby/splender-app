@@ -4,6 +4,7 @@ const config = require('./config'),
 	mongoose = require('mongoose');
 
 module.exports = function() {
+  // Connect to the MongoDB instance
 	let db = mongoose.connect(config.db);
 
 	// This section is where we require all

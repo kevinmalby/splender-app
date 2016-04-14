@@ -13,6 +13,10 @@ export class GameLobby {
     this.io.socket.on('add game', game => this.addGame(game));
   }
 
+  /**
+   * Load all of the currently available games when the
+   * game lobby is accessed
+   */
   attached() {
     this.http.fetch('/api/games')
     .then(response => response.json())
@@ -24,8 +28,11 @@ export class GameLobby {
     .catch(err => console.log(err));
   }
 
+  /**
+   * Adds a new game sent from the server to the list of games
+   * @param {Game Object} game [Contains metadata about the game]
+   */
   addGame(game) {
-    console.log('new game: ' + JSON.stringify(game, null, 2));
     this.games.push(game);
   }
 }

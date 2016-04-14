@@ -1,5 +1,6 @@
 import config from './config';
 
+// The configuration object for Aurelia-Auth
 let authConfig = {
   baseUrl: config.hostUrl,
   signupUrl: '/api/users',

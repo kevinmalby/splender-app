@@ -36,7 +36,7 @@ module.exports = function(db) {
 	app.use(bodyParser.urlencoded({ extended: true }));
 	app.use(bodyParser.json());
 
-	// Allow origin
+	// Allows for cross origin
 	app.use(allowCrossDomain);
 
 	// Require the index route
