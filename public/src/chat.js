@@ -7,11 +7,17 @@ export class Chat {
   messages = [];
   messageText = '';
   scrollPosition = 10000;
+  textColor = '';
 
   constructor(socket, user) {
     this.io = socket;
     this.user = user;
     this.io.socket.on('chat message', message => this.receiveMessage(message));
+    this.io.socket.on('chat color', color => this.textColor = color);
+  }
+
+  attached() {
+    this.io.socket.emit('get chat color');
   }
 
   /**
@@ -20,12 +26,12 @@ export class Chat {
    */
   sendMessage() {
     if (this.messageText) {
-      let chatText = `${this.user.data.username}: ${this.messageText}`;
-      this.messages.push(chatText);
+      let chatMessage = { user: this.user.data.username, color: this.textColor, text: this.messageText}
+      this.messages.push(chatMessage);
 
+      chatMessage.room = 'mainLobby';
       // TODO: For now hard-code room, but that will need to change
-      this.io.socket.emit('chat message',
-      {room: 'mainLobby', text: chatText});
+      this.io.socket.emit('chat message', chatMessage);
 
       // Keep the chat window fixed to the bottom
       this.scrollToBottom();

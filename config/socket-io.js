@@ -9,6 +9,7 @@ module.exports = function(server) {
   // of the io related services we define for the project
   io.on('connection', (socket) => {
     console.log('User connected!');
+
     require('../app/services/chat.server.service')(io, socket);
     require('../app/services/game-communication.server.service')(io, socket);
   });

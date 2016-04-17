@@ -5,10 +5,9 @@
 
 #chat-component {
   position: fixed;
-  top: 51px;
+  top: 64px;
   bottom: 0;
   left: 0;
-  background-color: #E6E6E6;
 }
 
 #game-content {
