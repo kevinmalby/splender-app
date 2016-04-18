@@ -23,6 +23,7 @@ export class GameLobby {
     .then(response => {
       if (response) {
         this.games = response.games;
+        console.log(JSON.stringify(this.games, null, 2));
       }
     })
     .catch(err => console.log(err));

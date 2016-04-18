@@ -1,0 +1,43 @@
+.game-info-container {
+  border: 1px solid transparent;
+  border-radius: 5px 5px 5px 5px;
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+  height: 350px;
+  margin-bottom: 40px;
+}
+
+#game-title {
+  margin: 0 auto;
+  padding: 15px 0;
+}
+
+.join-button {
+  position: absolute;
+  right: 2%;
+  bottom: 2%;
+  padding: 0 1.1em;
+}
+
+.join-button > i {
+  margin-left: 10px;
+}
+
+#privacy-container {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  width: 52px;
+}
+
+#privacy-container p {
+  margin: 0 auto;
+  font-weight: bold;
+}
+
+.game-card-body {
+  color: #434343;
+  position: absolute;
+  right: 0%;
+}

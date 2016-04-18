@@ -1,0 +1,43 @@
+#lobby-container {
+  padding: 0 5%;
+  position: relative;
+  z-index: 1;
+  margin-top: 7%;
+}
+
+#lobby-container a {
+  position: relative;
+  right: 0%;
+  bottom: 0%;
+}
+
+#lobby-title {
+  font-size: 2em;
+  margin-bottom: 0;
+}
+
+#lobby-container-header {
+  position: fixed;
+  width: 75%;
+  left: 21%;
+  padding-top: 2%;
+  z-index: 2;
+  background-color: white;
+}
+
+#lobby-container-header i {
+  margin: 0 -10px 0 10px;
+}
+
+#lobby-container-header a {
+  margin-right: 1%;
+  font-weight: bold;
+}
+
+#lobby-container-header p {
+  margin: 0;
+}
+
+hr {
+  margin: 0;
+}

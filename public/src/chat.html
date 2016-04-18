@@ -11,8 +11,8 @@
   <div id="chat-entry">
     <form role="form" submit.delegate="sendMessage()">
       <div id="entry-container" class="input-field">
-        <input type="text" id="input-chat" css="color: ${textColor};" placeholder="Enter some text..." value.bind="messageText">
-        <button id="input-button" class="btn">Send</button>
+        <input type="text" id="input-chat" css.bind="userColor" placeholder="Enter some text..." value.bind="messageText">
+        <button id="input-button" class="btn" css="background-color: ${userColor.color};">Send</button>
       </div>
     </form>
   </div>

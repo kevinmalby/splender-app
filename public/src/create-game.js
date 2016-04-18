@@ -34,7 +34,7 @@ export class CreateGame {
       willConvertToPublic: this.willConvertToPublic,
       timeUntilPublic: this.timeToWait,
       minPlayers: this.minPlayers,
-      maxPlayers: this.maxPlayers,
+      maxPlayers: this.maxPlayers
     };
 
     this.http.fetch('/api/games', {

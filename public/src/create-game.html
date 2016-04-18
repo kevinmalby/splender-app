@@ -43,7 +43,7 @@
             <div class="form-group" if.bind="willConvertToPublic">
               <p>Time Until Public</p>
               <select select class="browser-default" value.bind="timeToWait">
-                <option repeat.for="wait of waitTimes" value.bind="wait">${wait | secondsToHumanReadable}</option>
+                <option repeat.for="wait of waitTimes" value.bind="wait">${wait | secondsToHumanReadable:'long'}</option>
               </select>
             </div>
           </div>

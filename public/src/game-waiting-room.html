@@ -3,7 +3,7 @@
 
   <div class="container">
     <h3 class="center-align">${gameData.name}</h3>
-    <h5 class="right-align" if.bind="countdown != 0">Time until public: ${countdown | secondsToHumanReadable}</h5>
+    <h5 class="right-align" if.bind="countdown != 0">Time until public: ${countdown | secondsToHumanReadable:'long'}</h5>
     <h5>Ready</h5>
     <p repeat.for="player of readyPlayers">${player}</p>
   </div>

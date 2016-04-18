@@ -7,17 +7,27 @@ export class Chat {
   messages = [];
   messageText = '';
   scrollPosition = 10000;
-  textColor = '';
+  userColor = {};
 
   constructor(socket, user) {
     this.io = socket;
     this.user = user;
     this.io.socket.on('chat message', message => this.receiveMessage(message));
-    this.io.socket.on('chat color', color => this.textColor = color);
+    this.io.socket.on('chat color', color => this.setUserColor(color));
   }
 
   attached() {
     this.io.socket.emit('get chat color');
+  }
+
+  setUserColor(color) {
+    this.userColor = {
+      color: color,
+      'border-bottom': '1px solid ' + color,
+      '-webkit-box-shadow': '0 1px 0 0 ' + color,
+      '-moz-box-shadow': '0 1px 0 0 ' + color,
+      'box-shadow': '0 1px 0 0 ' + color
+    };
   }
 
   /**
@@ -26,7 +36,7 @@ export class Chat {
    */
   sendMessage() {
     if (this.messageText) {
-      let chatMessage = { user: this.user.data.username, color: this.textColor, text: this.messageText}
+      let chatMessage = { user: this.user.data.username, color: this.userColor.color, text: this.messageText}
       this.messages.push(chatMessage);
 
       chatMessage.room = 'mainLobby';

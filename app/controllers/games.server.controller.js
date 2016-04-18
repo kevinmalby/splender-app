@@ -55,17 +55,18 @@ exports.createGame = function(req, res, next) {
       return adminPlayer.user = user
     })
     .then(() => {
-      console.log('Admin: ' + req.body.owner);
-      return newGame = new Game({
+      newGame = new Game({
         name: req.body.name,
         isPublic: req.body.isPublic,
         willConvertToPublic: req.body.willConvertToPublic,
         timeUntilPublic: req.body.timeUntilPublic,
         minPlayers: req.body.minPlayers,
         maxPlayers: req.body.maxPlayers,
+        created: new Date(),
         adminPlayer: req.body.owner,
         players: [adminPlayer]
       });
+      return newGame;
     })
     .then(() => {
       return gameState.AddNewGame(newGame);

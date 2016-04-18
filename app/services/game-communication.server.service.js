@@ -10,4 +10,10 @@ module.exports = function(io, socket) {
   socket.on('game created', gameName => {
     socket.broadcast.emit('add game', gameState.getGameMetadata(gameName));
   });
+
+  socket.on('open to public', gameName => {
+    console.log('Open to public');
+    gameState.updatePrivacyState(gameName);
+    socket.broadcast.emit('update game privacy', gameName);
+  })
 }

@@ -1,10 +1,18 @@
 <template>
   <require from="./game-card"></require>
+  <require from="./game-lobby.css"></require>
 
-  <div>
+  <div id="lobby-container-header">
+    <a class="btn waves-effect waves-light green lighten-1 right"
+          click.delegate="createGame()">New Game<i class="material-icons right">add</i></a>
+    <p id="lobby-title">Games</p>
+    <hr size="6">
+  </div>
+  <div id="lobby-container">
     <div class="row">
-      <game-card repeat.for="game of games" class="col s6 m4 l3" game-data.bind="game"></game-card>
+      <div repeat.for="game of games" class="col s12 m6 l4 ${ $last ? 'last-game' : '' }">
+        <game-card game-data.bind="game"></game-card>
+      </div>
     </div>
-    <a click.delegate="createGame()">Create a game!</a>
   </div>
 </template>

@@ -21,7 +21,7 @@ export class GameLobby {
   activate(gameData) {
     this.gameData = gameData;
     this.addReadyPlayer(this.gameData.adminPlayer);
-    if (this.gameData.timeUntilPublic) {
+    if (!this.gameData.isPublic && this.gameData.willConvertToPublic) {
       this.setTimeUntilPublicCountdown(this.gameData.timeUntilPublic);
     }
   }

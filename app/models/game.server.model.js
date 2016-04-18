@@ -20,6 +20,7 @@ let GameSchema = new Schema({
   minPlayers: Number,
   maxPlayers: Number,
   numPlayers: Number,
+  created: Date,
   playerOrder: [String],
   tierOneCards: [CardSchema],
   tierTwoCards: [CardSchema],

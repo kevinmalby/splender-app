@@ -25,6 +25,8 @@
   height: 35px;
   padding: 0 10px;
   margin-left: 10px;
+  color: #323232;
+  font-weight: bold;
 }
 
 .label {
