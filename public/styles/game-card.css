@@ -38,6 +38,9 @@
 
 .game-card-body {
   color: #434343;
+}
+
+.game-card-metadata {
   position: absolute;
   right: 0%;
 }

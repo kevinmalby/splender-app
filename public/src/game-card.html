@@ -12,13 +12,22 @@
       <p class="center-align" if.bind="countdown">${countdown | secondsToHumanReadable:'micro'}</p>
     </div>
     <div class="game-card-body">
-      <div if.bind="gameData.minPlayers !== gameData.maxPlayers">
-        <p class="center-align num-players">${gameData.minPlayers} - ${gameData.maxPlayers}</p>
+      <div class="game-card-metadata">
+        <div if.bind="gameData.minPlayers !== gameData.maxPlayers">
+          <p class="center-align num-players">${gameData.minPlayers} - ${gameData.maxPlayers}</p>
+        </div>
+        <div if.bind="gameData.minPlayers === gameData.maxPlayers">
+          <p class="center-align num-players">${gameData.maxPlayers}</p>
+        </div>
+        <p class="center-align">Players</p>
       </div>
-      <div if.bind="gameData.minPlayers === gameData.maxPlayers">
-        <p class="center-align num-players">${gameData.maxPlayers}</p>
+      <div class="game-card-waiting-area">
+        <h5>Ready Players</h5>
+        <ul>
+          <li repeat.for="player of gameData.players">${player}</li>
+        </ul>
+        <h5>Waiting for:</h5>
       </div>
-      <p class="center-align">Players</p>
     </div>
     <button class="join-button btn green lighten-1" click.delegate="joinGame()">Join<i class="material-icons right">play_arrow</i></button>
   </div>

@@ -1,10 +1,17 @@
 <template>
   <require from="./value-converters/seconds-to-human-readable"></require>
+  <require from="./chat"/></require>
+  <require from="./game-waiting-room.css"/></require>
 
-  <div class="container">
-    <h3 class="center-align">${gameData.name}</h3>
-    <h5 class="right-align" if.bind="countdown != 0">Time until public: ${countdown | secondsToHumanReadable:'long'}</h5>
-    <h5>Ready</h5>
-    <p repeat.for="player of readyPlayers">${player}</p>
+  <div class="container z-depth-2">
+    <div class="row">
+      <div class="col s8">
+        <h3 class="center-align">${gameData.name}</h3>
+        <h5 class="right-align" if.bind="countdown != 0">Time until public: ${countdown | secondsToHumanReadable:'long'}</h5>
+        <h5>Ready</h5>
+        <p repeat.for="player of readyPlayers">${player}</p>
+      </div>
+      <chat class="col s4" chat-room.bind="waitingChatRoom"/></chat>
+    </div>
   </div>
 </template>

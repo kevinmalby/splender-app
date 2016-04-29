@@ -35,7 +35,8 @@ exports.getGameMetadata = function(gameName) {
     minPlayers: game.minPlayers,
     maxPlayers: game.maxPlayers,
     created: game.created,
-    adminPlayer: game.adminPlayer
+    adminPlayer: game.adminPlayer,
+    players: game.players.map(player => player.user[0].username)
   }
 };
 

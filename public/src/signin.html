@@ -1,11 +1,10 @@
 <template>
   <require from="./form-style.css"></require>
   <require from="./signin.css"></require>
+  <require from="./error-warning"/></require>
 
   <div class="container">
-    <div repeat.for="error of errors">
-      <div class="alert alert-danger">${error}</div>
-    </div>
+    <error-warning errors.bind="errors"/></error-warning>
     <h1 class="center-align">Sign In</h1>
     <div class="row">
       <form role="form" class="col s8 offset-s2 m6 offset-m3"

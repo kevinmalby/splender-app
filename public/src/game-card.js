@@ -13,7 +13,6 @@ export class GameCard {
   }
 
   bind() {
-    console.log('Game Card: ' + JSON.stringify(this.gameData, null, 2));
     if (!this.gameData.isPublic && this.gameData.willConvertToPublic) {
       this.setTimeUntilPublicCountdown(this.gameData.created, this.gameData.timeUntilPublic);
     }

@@ -1,16 +1,27 @@
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
+import { Socket } from './services/socket-service';
 
-@inject(EventAggregator)
+@inject(EventAggregator, Socket)
 export class GameLobby {
   gameData = null;
   countdownInterval = null;
   countdown = 0;
   readyPlayers = [];
   adminPlayer = false;
+  waitingChatRoom = '';
 
-  constructor(eventAggregator) {
+  constructor(eventAggregator, socket) {
     this.eventAggregator = eventAggregator;
+    this.io = socket;
+
+    this.io.socket.on('joined room', roomName => {
+      this.waitingChatRoom = roomName
+    });
+  }
+
+  bind() {
+    this.io.socket.emit('join chat room', this.gameData.name);
   }
 
   /**
