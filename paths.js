@@ -5,6 +5,9 @@ module.exports = {
   root: appRoot,
   source: appRoot + 'src/**/*.js',
   html: appRoot + 'src/**/*.html',
-  style: appRoot + 'styles/**/*.css',
-  output: outputRoot
+  fonts: appRoot + 'src/fonts/**/*.*',
+  style: appRoot + 'styles/**/*.sass',
+  materialize: appRoot + 'styles/materialize/**/*.scss',
+  output: outputRoot,
+  outputFonts: outputRoot + 'fonts/'
 };
