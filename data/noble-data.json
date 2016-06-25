@@ -1,0 +1,102 @@
+[
+  {
+    "victoryPointValue": 3,
+    "resourceRequirements": {
+      "onyx": 0,
+      "sapphire": 0,
+      "diamond": 0,
+      "emerald": 4,
+      "ruby": 4
+    }
+  },
+  {
+    "victoryPointValue": 3,
+    "resourceRequirements": {
+      "onyx": 3,
+      "sapphire": 0,
+      "diamond": 3,
+      "emerald": 0,
+      "ruby": 3
+    }
+  },
+  {
+    "victoryPointValue": 3,
+    "resourceRequirements": {
+      "onyx": 0,
+      "sapphire": 4,
+      "diamond": 4,
+      "emerald": 0,
+      "ruby": 0
+    }
+  },
+  {
+    "victoryPointValue": 3,
+    "resourceRequirements": {
+      "onyx": 4,
+      "sapphire": 0,
+      "diamond": 4,
+      "emerald": 0,
+      "ruby": 0
+    }
+  },
+  {
+    "victoryPointValue": 3,
+    "resourceRequirements": {
+      "onyx": 0,
+      "sapphire": 4,
+      "diamond": 0,
+      "emerald": 4,
+      "ruby": 0
+    }
+  },
+  {
+    "victoryPointValue": 3,
+    "resourceRequirements": {
+      "onyx": 0,
+      "sapphire": 3,
+      "diamond": 0,
+      "emerald": 3,
+      "ruby": 3
+    }
+  },
+  {
+    "victoryPointValue": 3,
+    "resourceRequirements": {
+      "onyx": 0,
+      "sapphire": 3,
+      "diamond": 3,
+      "emerald": 3,
+      "ruby": 0
+    }
+  },
+  {
+    "victoryPointValue": 3,
+    "resourceRequirements": {
+      "onyx": 4,
+      "sapphire": 0,
+      "diamond": 0,
+      "emerald": 0,
+      "ruby": 4
+    }
+  },
+  {
+    "victoryPointValue": 3,
+    "resourceRequirements": {
+      "onyx": 3,
+      "sapphire": 3,
+      "diamond": 3,
+      "emerald": 0,
+      "ruby": 0
+    }
+  },
+  {
+    "victoryPointValue": 3,
+    "resourceRequirements": {
+      "onyx": 3,
+      "sapphire": 0,
+      "diamond": 0,
+      "emerald": 3,
+      "ruby": 3
+    }
+  }
+]
