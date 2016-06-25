@@ -39,5 +39,9 @@ dist
 # Optional REPL history
 .node_repl_history
 
-# Data folder
-data
+# Exclude the mongodb files
+journal
+*.0
+*.ns
+*.bson
+*.lock
